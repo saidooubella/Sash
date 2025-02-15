@@ -1,67 +1,14 @@
 package saidooubella.sash.compiler.refiner
 
-import saidooubella.sash.compiler.parser.nodes.AccessRawExpression
-import saidooubella.sash.compiler.parser.nodes.AssignmentRawExpression
-import saidooubella.sash.compiler.parser.nodes.BinaryRawExpression
-import saidooubella.sash.compiler.parser.nodes.BooleanRawExpression
-import saidooubella.sash.compiler.parser.nodes.DecimalRawExpression
-import saidooubella.sash.compiler.parser.nodes.ElseIfRawClause
-import saidooubella.sash.compiler.parser.nodes.FunctionRawExpression
-import saidooubella.sash.compiler.parser.nodes.FunctionRawParams
-import saidooubella.sash.compiler.parser.nodes.IdentifierRawExpression
-import saidooubella.sash.compiler.parser.nodes.IfRawExpression
-import saidooubella.sash.compiler.parser.nodes.IntegerRawExpression
-import saidooubella.sash.compiler.parser.nodes.InvokeRawExpression
-import saidooubella.sash.compiler.parser.nodes.LogicalBinaryRawExpression
-import saidooubella.sash.compiler.parser.nodes.ParenthesizedRawExpression
-import saidooubella.sash.compiler.parser.nodes.RawControlBody
-import saidooubella.sash.compiler.parser.nodes.RawExpression
-import saidooubella.sash.compiler.parser.nodes.SimpleRawArgs
-import saidooubella.sash.compiler.parser.nodes.StringRawExpression
-import saidooubella.sash.compiler.parser.nodes.TailFunctionRawArgs
-import saidooubella.sash.compiler.parser.nodes.UnaryRawExpression
-import saidooubella.sash.compiler.parser.nodes.ValueRawArgs
+import saidooubella.sash.compiler.parser.nodes.*
 import saidooubella.sash.compiler.refiner.context.FunctionScope
 import saidooubella.sash.compiler.refiner.context.IfScope
 import saidooubella.sash.compiler.refiner.context.RefinerContext
-import saidooubella.sash.compiler.refiner.nodes.AssignmentExpression
-import saidooubella.sash.compiler.refiner.nodes.BinaryExpression
-import saidooubella.sash.compiler.refiner.nodes.BooleanExpression
-import saidooubella.sash.compiler.refiner.nodes.DecimalExpression
-import saidooubella.sash.compiler.refiner.nodes.ElseIfClause
-import saidooubella.sash.compiler.refiner.nodes.ErrorExpression
-import saidooubella.sash.compiler.refiner.nodes.Expression
-import saidooubella.sash.compiler.refiner.nodes.FunctionExpression
-import saidooubella.sash.compiler.refiner.nodes.IdentifierExpression
-import saidooubella.sash.compiler.refiner.nodes.IfExpression
-import saidooubella.sash.compiler.refiner.nodes.IntegerExpression
-import saidooubella.sash.compiler.refiner.nodes.InvokeExpression
-import saidooubella.sash.compiler.refiner.nodes.LogicalBinaryExpression
-import saidooubella.sash.compiler.refiner.nodes.Parameter
-import saidooubella.sash.compiler.refiner.nodes.ParenthesizedExpression
-import saidooubella.sash.compiler.refiner.nodes.Statement
-import saidooubella.sash.compiler.refiner.nodes.StringExpression
-import saidooubella.sash.compiler.refiner.nodes.UnaryExpression
-import saidooubella.sash.compiler.refiner.nodes.YieldStatement
-import saidooubella.sash.compiler.refiner.symbols.DecimalType
-import saidooubella.sash.compiler.refiner.symbols.Definition
-import saidooubella.sash.compiler.refiner.symbols.ErrorType
-import saidooubella.sash.compiler.refiner.symbols.FunctionType
-import saidooubella.sash.compiler.refiner.symbols.IntegerType
-import saidooubella.sash.compiler.refiner.symbols.Type
-import saidooubella.sash.compiler.refiner.symbols.TypeParam
-import saidooubella.sash.compiler.refiner.symbols.UnitType
+import saidooubella.sash.compiler.refiner.nodes.*
+import saidooubella.sash.compiler.refiner.symbols.*
 import saidooubella.sash.compiler.tokens.Token
 import saidooubella.sash.compiler.tokens.TokenType
-import saidooubella.sash.compiler.utils.elementsSize
-import saidooubella.sash.compiler.utils.fastForEach
-import saidooubella.sash.compiler.utils.fastMap
-import saidooubella.sash.compiler.utils.fastZipEach
-import saidooubella.sash.compiler.utils.fastZipToMutableMap
-import saidooubella.sash.compiler.utils.forEach
-import saidooubella.sash.compiler.utils.forEachIndexed
-import saidooubella.sash.compiler.utils.map
-import saidooubella.sash.compiler.utils.orEmpty
+import saidooubella.sash.compiler.utils.*
 import kotlin.math.min
 
 @JvmInline
@@ -96,6 +43,7 @@ internal fun refineExpression(context: RefinerContext, expression: RawExpression
     }
 }
 
+@Suppress("UNUSED_PARAMETER")
 private fun refineAccessExpression(context: RefinerContext, expression: AccessRawExpression): Expression {
     TODO("Not yet implemented")
 }

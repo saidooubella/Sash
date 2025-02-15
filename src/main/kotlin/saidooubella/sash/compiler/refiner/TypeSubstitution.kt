@@ -1,11 +1,6 @@
 package saidooubella.sash.compiler.refiner
 
-import saidooubella.sash.compiler.refiner.symbols.ErrorType
-import saidooubella.sash.compiler.refiner.symbols.FunctionType
-import saidooubella.sash.compiler.refiner.symbols.PlaceholderType
-import saidooubella.sash.compiler.refiner.symbols.RecordType
-import saidooubella.sash.compiler.refiner.symbols.Type
-import saidooubella.sash.compiler.refiner.symbols.TypeParam
+import saidooubella.sash.compiler.refiner.symbols.*
 
 internal fun FunctionType.substitute(args: Map<TypeParam, Type>): FunctionType {
     return FunctionType(typeParams, valueParams.map { it.substitute(args) }, returnType.substitute(args))

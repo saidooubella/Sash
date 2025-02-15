@@ -2,11 +2,7 @@ package saidooubella.sash.compiler.parser
 
 import saidooubella.sash.compiler.input.MutableInput
 import saidooubella.sash.compiler.parser.context.ParserContext
-import saidooubella.sash.compiler.parser.nodes.RawFunctionType
-import saidooubella.sash.compiler.parser.nodes.RawSimpleType
-import saidooubella.sash.compiler.parser.nodes.RawType
-import saidooubella.sash.compiler.parser.nodes.RawTypeAnnotation
-import saidooubella.sash.compiler.parser.nodes.TypeRawArgs
+import saidooubella.sash.compiler.parser.nodes.*
 import saidooubella.sash.compiler.parser.utils.consumeToken
 import saidooubella.sash.compiler.parser.utils.consumeTokenOrNull
 import saidooubella.sash.compiler.parser.utils.consumeWhile

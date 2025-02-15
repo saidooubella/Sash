@@ -7,8 +7,8 @@ import saidooubella.sash.compiler.tokens.TokenizerContext
 import saidooubella.sash.compiler.tokens.cases.TokenCase
 import saidooubella.sash.compiler.tokens.utils.collectWhile
 import saidooubella.sash.compiler.tokens.utils.consume
-import saidooubella.sash.compiler.tokens.utils.notMatchesNewLine
 import saidooubella.sash.compiler.tokens.utils.matches
+import saidooubella.sash.compiler.tokens.utils.notMatchesNewLine
 
 internal object LineCommentCase : TokenCase {
 

@@ -2,16 +2,7 @@ package saidooubella.sash.compiler.tokens
 
 import saidooubella.sash.compiler.input.MutableIntInput
 import saidooubella.sash.compiler.input.provider.InputProvider
-import saidooubella.sash.compiler.tokens.cases.normal.BlockCommentCase
-import saidooubella.sash.compiler.tokens.cases.normal.EndOfFileCase
-import saidooubella.sash.compiler.tokens.cases.normal.IdentifierCase
-import saidooubella.sash.compiler.tokens.cases.normal.IllegalCharacterCase
-import saidooubella.sash.compiler.tokens.cases.normal.LineBreakCase
-import saidooubella.sash.compiler.tokens.cases.normal.LineCommentCase
-import saidooubella.sash.compiler.tokens.cases.normal.NumberCase
-import saidooubella.sash.compiler.tokens.cases.normal.PunctuationCase
-import saidooubella.sash.compiler.tokens.cases.normal.StringQuoteCase
-import saidooubella.sash.compiler.tokens.cases.normal.WhitespaceCase
+import saidooubella.sash.compiler.tokens.cases.normal.*
 import saidooubella.sash.compiler.tokens.cases.string.StringLiteralCase
 import saidooubella.sash.compiler.tokens.cases.string.StringUnquoteCase
 

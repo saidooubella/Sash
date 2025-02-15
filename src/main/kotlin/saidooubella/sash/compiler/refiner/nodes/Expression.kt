@@ -1,14 +1,6 @@
 package saidooubella.sash.compiler.refiner.nodes
 
-import saidooubella.sash.compiler.refiner.symbols.BooleanType
-import saidooubella.sash.compiler.refiner.symbols.DecimalType
-import saidooubella.sash.compiler.refiner.symbols.Definition
-import saidooubella.sash.compiler.refiner.symbols.ErrorType
-import saidooubella.sash.compiler.refiner.symbols.FunctionType
-import saidooubella.sash.compiler.refiner.symbols.IntegerType
-import saidooubella.sash.compiler.refiner.symbols.StringType
-import saidooubella.sash.compiler.refiner.symbols.Type
-import saidooubella.sash.compiler.refiner.symbols.Typed
+import saidooubella.sash.compiler.refiner.symbols.*
 import saidooubella.sash.compiler.span.Position
 import saidooubella.sash.compiler.span.Spanned
 
