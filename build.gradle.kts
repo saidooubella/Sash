@@ -2,11 +2,20 @@ plugins {
     kotlin("jvm") version "2.1.0"
 }
 
-group = "saidooubella"
+group = "io.github.saidooubella"
 version = "0.0.1-dev"
 
 repositories {
     mavenCentral()
+}
+
+kotlin {
+    jvmToolchain(11)
+    explicitApi()
+    compilerOptions {
+        freeCompilerArgs.add("-opt-in=kotlin.contracts.ExperimentalContracts")
+        freeCompilerArgs.add("-Xconsistent-data-class-copy-visibility")
+    }
 }
 
 dependencies {
@@ -17,13 +26,4 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-}
-
-kotlin {
-    jvmToolchain(21)
-    explicitApi()
-    compilerOptions {
-        freeCompilerArgs.add("-opt-in=kotlin.contracts.ExperimentalContracts")
-        freeCompilerArgs.add("-Xconsistent-data-class-copy-visibility")
-    }
 }
