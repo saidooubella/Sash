@@ -48,4 +48,20 @@ public class DiagnosticsReporter(private val fileName: String) {
     internal fun reportIllegalCharacter(start: Position, end: Position, text: String) {
         report(start, end, "Invalid character `$text`")
     }
+
+    internal fun reportUnexpectedToken(start: Position, end: Position, expected: String, actual: String?) {
+        val message = when (actual) {
+            null -> "Expected $expected"
+            else -> "Expected `$expected` but got `$actual`"
+        }
+        report(start, end, message)
+    }
+
+    internal fun reportUnterminatedString(start: Position, end: Position) {
+        report(start, end, "Unterminated string")
+    }
+
+    internal fun reportRedundantSemicolon(start: Position, end: Position, count: Int) {
+        report(start, end, "Redundant " + if (count > 1) "semicolons" else "semicolon")
+    }
 }
