@@ -40,27 +40,6 @@ Make sure to replace `LAST-COMMIT-HASH` with the hash of the latest commit from 
 Now, you can start using Sash in your project. Here’s a basic example:
 
 ```Kotlin
-import saidooubella.sash.compiler.diagnostics.DiagnosticsReporter
-import saidooubella.sash.compiler.diagnostics.formattedMessage
-import saidooubella.sash.evaluator.Environment
-import saidooubella.sash.evaluator.Evaluator
-import saidooubella.sash.evaluator.createNativeFunction
-import saidooubella.sash.evaluator.values.UnitValue
-import saidooubella.sash.compiler.input.MutableIntInput
-import saidooubella.sash.compiler.input.map
-import saidooubella.sash.compiler.input.observer
-import saidooubella.sash.compiler.input.provider.StringProvider
-import saidooubella.sash.compiler.parser.Parse
-import saidooubella.sash.compiler.parser.context.ParserContext
-import saidooubella.sash.compiler.refiner.Refine
-import saidooubella.sash.compiler.refiner.context.RefinerContext
-import saidooubella.sash.compiler.refiner.nodes.Program
-import saidooubella.sash.compiler.refiner.symbols.PrintLn
-import saidooubella.sash.compiler.span.MutablePositionBuilder
-import saidooubella.sash.compiler.tokens.RawTokensProvider
-import saidooubella.sash.compiler.tokens.TokenizerContext
-import saidooubella.sash.compiler.tokens.TokensProvider
-
 private suspend fun compile(source: String) = withContext(Dispatchers.IO) {
 
     val positionBuilder = MutablePositionBuilder()
@@ -152,10 +131,10 @@ Sash supports the following core types:
 
 In Sash, **literals** are fixed values used directly in the code. They are not computed and remain constant throughout the program.
 
-**String Literal**: A sequence of characters enclosed in double quotes (`"Hello, world!"`).
-**Integer Literal**: A whole number composed of one or more digits (`70803`).
-**Decimal Literal**: A floating-point number written with a decimal point (`70820.03`).
-**Boolean Literal**: Represents truth values, either `true` or `false`.
+-   **String Literal**: A sequence of characters enclosed in double quotes (`"Hello, world!"`).
+-   **Integer Literal**: A whole number composed of one or more digits (`70803`).
+-   **Decimal Literal**: A floating-point number written with a decimal point (`70820.03`).
+-   **Boolean Literal**: Represents truth values, either `true` or `false`.
 
 ### Operations
 
