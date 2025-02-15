@@ -32,4 +32,20 @@ public class DiagnosticsReporter(private val fileName: String) {
     }
 
     public fun build(): List<Diagnostic> = reports.toList()
+
+    internal fun reportInvalidEscaping(start: Position, end: Position, esc: String) {
+        report(start, end, "Invalid escaping \\$esc")
+    }
+
+    internal fun reportIncompleteEscaping(start: Position, end: Position) {
+        report(start, end, "Expected and escaping sequence")
+    }
+
+    internal fun reportUnclosedComment(start: Position, end: Position) {
+        report(start, end, "Unclosed comment")
+    }
+
+    internal fun reportIllegalCharacter(start: Position, end: Position, text: String) {
+        report(start, end, "Invalid character `$text`")
+    }
 }

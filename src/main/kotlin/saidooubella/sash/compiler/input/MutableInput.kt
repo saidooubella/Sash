@@ -13,7 +13,7 @@ public abstract class MutableInput<T> internal constructor() : Input<T>() {
     internal abstract fun done()
 }
 
-internal fun <T> MutableInput<T>.consume(): T = current.also { _ -> advance() }
+internal fun <T> MutableInput<T>.consume(): T = current.also { advance() }
 
 private class MutableInputImpl<T>(private val provider: InputProvider<T>) : MutableInput<T>() {
 
@@ -51,7 +51,7 @@ private class MutableInputImpl<T>(private val provider: InputProvider<T>) : Muta
         require(offset >= 0) { "offset < 0" }
         if (offset == 0 || isDone) return current
         if (offset <= cache.size) return cache[offset - 1]
-        repeat(offset - cache.size) { _ ->
+        repeat(offset - cache.size) {
             val next = provider.next()
             if (provider.isDone(next)) return next
             cache.addLast(next)
