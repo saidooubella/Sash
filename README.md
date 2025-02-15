@@ -191,7 +191,7 @@ In Sash, operations are performed on values of specific types, and certain opera
 | **Type** | **Operation** | **Symbol** | **Example** |
 |---|---|---|---|
 | **Boolean** | Logical AND | `&&` | `true && false` |
-| | Logical OR | `||` | `true || false` |
+| | Logical OR | `\|\|` | `true \|\| false` |
 | | Logical NOT | `!` | `!true` |
 
 ### Control Flow Control flow
@@ -204,13 +204,13 @@ statements allow you to dictate the flow of execution in your Sash program. Belo
  
 ```Sash
 if dirty {
-	validate();
+    validate();
 }
 
 if x > 10 {
-	println("x is greater than 10");
+    println("x is greater than 10");
 } else {
-	println("x is 10 or less");
+    println("x is 10 or less");
 }
 ```
 
@@ -218,11 +218,11 @@ You can chain multiple `if` expressions/statements.
 
 ```Sash
 if x > 10 {
-	println("x is greater than 10");
+    println("x is greater than 10");
 } else if x == 10 {
-	println("x is exactly 10");
+    println("x is exactly 10");
 } else {
-	println("x is less than 10");
+    println("x is less than 10");
 }
 ```
 
@@ -241,8 +241,8 @@ The `while` loop allows you to execute a block of code repeatedly as long as a c
 
 ```Sash
 while x < 5 {
-	println(x);
-	x = x + 1;
+    println(x);
+    x = x + 1;
 }
 ```
 
@@ -252,8 +252,8 @@ The `break` statement is used to exit from a loop prematurely.
 
 ```Sash
 while true {
-	println("This will run forever unless broken");
-	break; // Exit the loop
+    println("This will run forever unless broken");
+    break; // Exit the loop
 }
 ```
 
@@ -263,11 +263,11 @@ The `continue` statement skips the current iteration of the loop and moves to th
 
 ```Sash
 while i < 5 {
-	if i == 3 {
-		continue; // Skip when i equals 3
-	}
-	println(i);
-	i = i + 1;
+    if i == 3 {
+        continue; // Skip when i equals 3
+    }
+    println(i);
+    i = i + 1;
 }
 ```
 
@@ -314,11 +314,11 @@ Functions can also be defined with the same `def` keyword, allowing for function
 
 ```Sash
 def add = { lhs: Int, rhs: Int ->
-	return lhs + rhs;
+    return lhs + rhs;
 };
 
 def main = {
-  println(add(1, 2));
+    println(add(1, 2));
 };
 
 main();
@@ -354,7 +354,7 @@ Function parameter type annotations can be omitted when the surrounding context,
 
 ```Sash
 def greet: (String) -> Unit = { name ->
-	println("Hello, " + name);
+    println("Hello, " + name);
 };
 
 greet("Sash");
