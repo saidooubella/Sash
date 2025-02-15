@@ -1,0 +1,202 @@
+## Notation
+
+  - ( .. )         denotes a group;
+  - ? .. ?         denotes a description;
+  - '..'           denotes a terminal;
+  - [a-z][a-z\-]*  denotes a non terminal;
+  - ..=            denotes an inclusive range;
+  - |              denotes alternatives;
+  - *              denotes zero or more repetitions;
+  - +              denotes one or more repetitions;
+  - ?              denotes option (one or zero);
+  - ~              denotes negation.
+
+## Statements
+
+statement            = definition
+                     | continue
+                     | discard
+                     | return
+                     | break
+                     | while
+                     | yield
+                     | unit
+                     ;
+
+discard              = _ = expression ';'
+                     ;
+
+unit                 = expression ';'
+                     ;
+
+yield                = expression
+                     ;
+
+definition           = 'def' 'mut' identifier type-params? type-annotation? '=' initializer ';'
+                     ;
+
+initializer          = record ( '{' fields '}' )?
+                     | enum '{' enum-entries '}'
+                     | expression
+                     ;
+
+enum-entries         = enum-entry ( ',' enum-entry )* ','?
+                     ;
+
+enum-entry           = identifier ( '{' fields '}' )?
+                     ;
+
+type-params          = '[' identifier ( ',' identifier )* ','? ']'
+                     ;
+
+while                = 'while' expression control-body
+                     ;
+
+return               = 'return' ( ';' | expression ';' )
+                     ;
+
+continue             = 'continue' ';'
+                     ;
+
+break                = 'break' ';'
+                     ;
+
+## Expressions
+
+expression           = assignment
+                     ;
+
+assignment           = disjunction ( '=' expression )?
+                     ;
+
+disjunction          = conjunction ( '||' conjunction )*
+                     ;
+
+conjunction          = equality ( '&&' equality )*
+                     ;
+
+equality             = comparison ( ( '==' | '!=' ) comparison )*
+                     ;
+
+comparison           = additive ( ( '>' | '<' | '>=' | '<=' ) additive )*
+                     ;
+
+additive             = multiplicative ( ( '+' | '-' ) multiplicative )*
+                     ;
+
+multiplicative       = prefix ( ( '*' | '/' | '%' ) prefix )*
+                     ;
+
+prefix               = ( '!' | '+' | '-' ) prefix
+                     | postfix
+                     ;
+
+postfix              = primary type-args? ( value-args* | value-args function | function )
+                     ;
+
+value-args           = '(' ( expression ( ',' expression )* ','? )? ')'
+                     ;
+
+primary              = boolean
+                     | decimal
+                     | function
+                     | identifier
+                     | integer
+                     | string
+                     | if
+                     ;
+
+if                   = if-branch else-branch?
+                     ;
+
+if-branch            = 'if' expression control-body
+                     ;
+
+else-branch          = 'else' ( if | control-body )
+                     ;
+
+boolean              = 'true'
+                     | 'false'
+                     ;
+
+integer              = digit+
+                     ;
+
+decimal              = digit+ '.' digit+
+                     ;
+
+string               = '"' string-part* '"'
+                     ;
+
+string-part          = ~( '"' | '\r\n' | '\r' | '\n' )
+                     | '\' ( '\' | 'r' | 'n' | 't' | 'b' | '"' | '\r\n' | '\r' | '\n' )
+                     | '\u' hex-digit hex-digit hex-digit hex-digit
+                     ;
+
+function             = '{' function-params? statement* '}'
+                     ;
+
+function-params      = function-param ( ',' function-param )* ','? '->'
+                     ;
+
+function-param       = identifier type-annotation?
+                     ;
+
+## Types
+
+type                 = function-type
+                     | simple-type
+                     ;
+
+function-type        = '(' ( type ( ',' type )* ','? )? ')' '->' type
+                     ;
+
+simple-type          = identifier type-args?
+                     ;
+
+## Common
+
+fields               = field ( ',' field )* ','?
+                     ;
+
+field                = identifier type-annotation
+                     ;
+
+type-args            = '[' type ( ',' type )* ','? ']'
+                     ;
+
+type-annotation      = ':' type
+                     ;
+
+control-body         = '{' statement* '}'
+                     ;
+
+digit                = '0' ..= '9'
+                     ;
+
+hex-digit            = digit
+                     | 'A' ..= 'F'
+                     | 'a' ..= 'f'
+                     ;
+
+identifier           = identifier-start identifier-rest*
+                     ;
+
+identifier-start     = unicode-letter
+                     | '_'
+                     ;
+
+identifier-rest      = identifier-start
+                     | unicode-digit
+                     ;
+
+unicode-letter       = ? unicode-class-lu ?
+                     | ? unicode-class-ll ?
+                     | ? unicode-class-lt ?
+                     | ? unicode-class-lm ?
+                     | ? unicode-class-lo ?
+                     ;
+
+unicode-digit        = ? unicode-class-nd ?
+                     | ? unicode-class-nl ?
+                     ;

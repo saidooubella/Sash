@@ -25,6 +25,5 @@ kotlin {
     compilerOptions {
         freeCompilerArgs.add("-opt-in=kotlin.contracts.ExperimentalContracts")
         freeCompilerArgs.add("-Xconsistent-data-class-copy-visibility")
-        extraWarnings.set(true)
     }
 }
